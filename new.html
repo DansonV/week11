@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<title>New</title>
+	</head>
+	<body>
+	
+			<form>		
+				<div class="form-group">
+					<label for="input1">Input 1</label>
+					<input type="text" class="form-control" name="input1" id="input1" placeholder="Enter information here.">
+				</div>
+				
+				<div class="form-group">
+					<label for="input2">Input 2</label>
+					<input type="text" class="form-control" name="input2" id="input2" placeholder="Enter information here.">
+				</div>
+				
+				<div class="form-group">
+					<label for="input3">Input 3</label>
+					<input type="text" class="form-control" name="input3" id="input3" placeholder="Enter information here.">
+				</div>
+				
+				<input onclick = "window.location.href = 'index.html';" type = "submit" value = "Send Information"/>			
+			</form>
+			
+			<div id = "data"></div>
+	
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script>
+			$("form").submit(function(event) {
+				// prevents default action of the browser
+				event.preventDefault();
+				
+				// turns all form elements into an array
+				var formData = $(this).serializeArray();
+				console.log("Form Data!", formData);
+				
+				// condenses data into object
+				var dataObject = condenseData(formData);
+				
+				// stores data
+				saveDataToLocalStorage(dataObject);
+				
+				// displays data
+				displayDataOnPage();
+				
+			});
+			
+			function condenseData(formData) {
+				var object = {
+				
+				};
+				
+				// loop through the interable rows
+				$(formData).each(function() {
+					console.log(this);
+					
+					object[this.name] = this.value;
+				});
+				
+				console.log("Form data in object.", object);
+				
+				return object;
+			};
+			
+			function saveDataToLocalStorage(dataObject) {
+				var dataArray = JSON.parse(localStorage.getItem("data"));
+				
+				// if dataArray does not exist, then one is created
+				if(!dataArray) {
+					dataArray = [
+					
+					];
+				};
+				
+				dataArray.push(dataObject);
+				
+				localStorage.setItem("data", JSON.stringify(dataArray));
+			};
+			
+			function displayDataOnPage() {
+				var data = JSON.parse(localStorage.getItem("data"));
+				
+				// update page with data from localStorage
+				$(data).each(function() {
+					$("#data").append(`<p>${this.input1} - ${this.input2} - ${this.input3}</p>`);
+				});
+			};
+			
+			displayDataOnPage();
+		
+		</script>
+	</body>
+</html>
