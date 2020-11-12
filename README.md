@@ -19,11 +19,11 @@ Create a "javascript.js" file and a "style.css" file as well.
 
 In your index page, create a table to display the items you are CRUDing.
 
- When the page loads, you should pull out all of the previously saved items in local storage and display them in the table.
+When the page loads, you should pull out all of the previously saved items in local storage and display them in the table.
  
-One of the pieces of information in the table for the item should be a link that directs the user to "edit.html".
+ One of the pieces of information in the table for the item should be a link that directs the user to "edit.html".
 
-We are going to do any editing this week, but just get the navigation setup.
+  We are going to do any editing this week, but just get the navigation setup.
 
 There should be a link at the top of the page that will send the user to new.html.
 
@@ -33,7 +33,7 @@ New
 
 There should be a form on the page with at minimum 3 text inputs.
 
-feel free to use other form inputs if you want though.
+ feel free to use other form inputs if you want though.
 
 The form should have an input with the type of submit to submit the form.
 
@@ -43,8 +43,8 @@ Synthesize/message/create a basic object from the form data by serializingArray(
 
 Save the new object into the array in local storage.
 
-Make sure you check for an existing array first, and make a new one if needed.
+ Make sure you check for an existing array first, and make a new one if needed.
 
-Make sure to stringify your javascript before saving to localstorage.
+ Make sure to stringify your javascript before saving to localstorage.
 
 After saving, redirect the user back to index.
